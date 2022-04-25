@@ -1,6 +1,6 @@
 weave_noise <- function(
   seed, x_min, x_max, y_min, y_max, grid_length, warp_factor, geom_size_min,
-  geom_size_max, noise_type = c("perlin", "simplex", "value", "cubic")){
+  geom_size_max, subsets, noise_type = c("perlin", "simplex", "value", "cubic")){
   
   # Requires {ambient}, {dplyr}, {purrr}
   
@@ -32,6 +32,10 @@ weave_noise <- function(
     geom_size_max <- 1.5
   }
   
+  if(missing(subsets)){
+    subsets <- 20
+  }
+  
   if(missing(noise_type)){
     noise_type <- "perlin"
   }
@@ -51,7 +55,7 @@ weave_noise <- function(
         y_warped = y + (curl_y / warp_factor),
         size = sample(seq(geom_size_min, geom_size_max, by = 0.1),
                       dplyr::n(), replace = TRUE),
-        subset = sample(1:20, dplyr::n(), replace = TRUE))
+        subset = sample(1:subsets, dplyr::n(), replace = TRUE))
     
   }
   
@@ -70,7 +74,7 @@ weave_noise <- function(
         y_warped = y + (curl_y / warp_factor),
         size = sample(seq(geom_size_min, geom_size_max, by = 0.1),
                       dplyr::n(), replace = TRUE),
-        subset = sample(1:20, dplyr::n(), replace = TRUE))
+        subset = sample(1:subsets, dplyr::n(), replace = TRUE))
     
   }
   
@@ -89,7 +93,7 @@ weave_noise <- function(
         y_warped = y + (curl_y / warp_factor),
         size = sample(seq(geom_size_min, geom_size_max, by = 0.1),
                       dplyr::n(), replace = TRUE),
-        subset = sample(1:20, dplyr::n(), replace = TRUE))
+        subset = sample(1:subsets, dplyr::n(), replace = TRUE))
     
   }
   
@@ -108,7 +112,7 @@ weave_noise <- function(
         y_warped = y + (curl_y / warp_factor),
         size = sample(seq(geom_size_min, geom_size_max, by = 0.1),
                       dplyr::n(), replace = TRUE),
-        subset = sample(1:20, dplyr::n(), replace = TRUE))
+        subset = sample(1:subsets, dplyr::n(), replace = TRUE))
     
   }
   
