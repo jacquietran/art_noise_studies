@@ -61,8 +61,8 @@ ggplot() +
       curvature = 0.8),
     id = "base") +
   geom_point(
-    data = grid %>% filter(subset >= 10),
-    aes(x = x_warped, y = y_warped, size = size / 3),
+     data = grid %>% filter(subset >= 10),
+     aes(x = x_warped, y = y_warped, size = size / 3),
     colour = bg_colour) +
   ggfx::with_blend(
     geom_point(
@@ -78,10 +78,6 @@ ggplot() +
       shape = 16),
     bg_layer = "base",
     blend_type = "hard_light") +
-  # geom_point(
-  #  data = grid %>% filter(subset == 1),
-  #  aes(x = x_warped, y = y_warped, size = size * 2),
-  #  colour = bg_colour, shape = 11) +
   scale_size_identity() +
   scale_colour_identity() +
   coord_equal(expand = TRUE) +
