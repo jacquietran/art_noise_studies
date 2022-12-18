@@ -58,7 +58,7 @@ ggplot() +
       geom_curve(
         data = grid,
         aes(x = x, y = y, xend = x_warped, yend = y_warped, size = size * 3,
-            colour = colour1),
+            colour = colour1, group = subset),
         curvature = -0.2),
       x_offset = 20, y_offset = 20, sigma = 10),
     id = "base") +
